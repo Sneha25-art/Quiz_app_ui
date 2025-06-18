@@ -28,7 +28,7 @@ class ResultScreen extends StatelessWidget {
       }
     }
 
-    //final bool ratingMatches = (score >= userRating - 1);
+    
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -51,17 +51,22 @@ class ResultScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              if (score == questions.length)
-                const Text(
-                  '🎉 Wow! You know yourself well!',
-                  style: TextStyle(fontSize: 18, color: Colors.greenAccent),
-                )
+              if (score == questions.length && userRating >= 3)
+                   const Text(
+                             '🎉 Wow! You know yourself well!',
+                              style: TextStyle(fontSize: 18, color: Colors.greenAccent),
+                             )
+              else if (score == questions.length && userRating < 3)
+                          const Text(
+                              '🤔 You answered all questions correctly, but rated yourself low.\nGive yourself more credit—you did great!',
+                                 style: TextStyle(fontSize: 18, color: Colors.lightBlueAccent),
+                                    )
               else
-                const Text(
-                  '💡 Better luck next time! Keep learning and stay sharp!',
-                  style: TextStyle(fontSize: 18, color: Colors.orangeAccent),
-                ),
-              const SizedBox(height: 30),
+                           const Text(
+                                  '💡 Better luck next time! Keep learning and stay sharp!',
+                                  style: TextStyle(fontSize: 18, color: Colors.orangeAccent),
+                                      ),
+
               if (incorrectAnswers.isNotEmpty)
                 const Text(
                   'Questions you missed:',
